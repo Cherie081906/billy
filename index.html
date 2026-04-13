@@ -2,95 +2,289 @@
 
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Billy 💕</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Billy 💕</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-<style>
+```
 body {
-    margin: 0;
-    height: 100vh;
-    background: linear-gradient(to right, #ffd6e0, #ff9bb3);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: Arial;
-    text-align: center;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background: linear-gradient(135deg, #ffe3ec, #ffc1d6, #ffd9e8);
+  overflow: hidden;
 }
 
 .container {
-    position: relative;
+  width: 90%;
+  max-width: 500px;
+  padding: 30px 20px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 10px 30px rgba(255, 105, 180, 0.18);
+  position: relative;
+  z-index: 2;
 }
 
 h1 {
-    color: #ff2e6a;
-    font-size: 2.5rem;
+  color: #ff2f7d;
+  font-size: 2.4rem;
+  margin-bottom: 20px;
+  line-height: 1.2;
+  text-shadow: 2px 2px 10px rgba(255, 105, 180, 0.15);
+}
+
+.gif-box img {
+  width: 220px;
+  max-width: 80%;
+  border-radius: 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-top: 10px;
 }
 
 button {
-    padding: 15px 30px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 18px;
+  transition: all 0.25s ease;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+}
+
+#yesBtn {
+  background: #43c463;
+  font-size: 26px;
+  padding: 20px 42px;
+}
+
+#noBtn {
+  background: #ef4b4b;
+  font-size: 22px;
+  padding: 18px 34px;
+}
+
+.hearts {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.heart {
+  position: absolute;
+  bottom: -30px;
+  font-size: 20px;
+  animation: floatUp linear forwards;
+  opacity: 0.7;
+}
+
+@keyframes floatUp {
+  to {
+    transform: translateY(-110vh);
+    opacity: 0;
+  }
+}
+
+.final-message {
+  padding: 30px;
+}
+
+.final-message h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.final-message p {
+  color: #d63384;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.final-message img {
+  width: 240px;
+  max-width: 85%;
+  border-radius: 20px;
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  #yesBtn {
+    font-size: 22px;
+    padding: 18px 34px;
+  }
+
+  #noBtn {
     font-size: 18px;
-    border: none;
-    border-radius: 12px;
-    margin: 10px;
-    cursor: pointer;
-}
+    padding: 14px 24px;
+  }
 
-#yes {
-    background: #4CAF50;
-    color: white;
+  .gif-box img {
+    width: 190px;
+  }
 }
+```
 
-#no {
-    background: #e74c3c;
-    color: white;
-    position: absolute;
-}
-</style>
-
+  </style>
 </head>
-
 <body>
+  <div class="hearts" id="hearts"></div>
 
-<div class="container">
-    <h1>Billy… will you date me? 💕</h1>
+  <div class="container" id="app">
+    <h1 id="question">Billy, will you date me? 💕</h1>
 
 ```
-<img src="https://media.tenor.com/7xKXgJYFQnEAAAAi/cute.gif" width="150">
-
-<br><br>
-
-<button id="yes">Yes 😳</button>
-<button id="no">No 😢</button>
-```
-
+<div class="gif-box">
+  <img
+    id="mainGif"
+    src="https://media.tenor.com/5mbD2V7smWAAAAAi/milk-and-mocha-bear-couple.gif"
+    alt="cute gif"
+  />
 </div>
 
-<script>
-const noBtn = document.getElementById("no");
+<div class="buttons">
+  <button id="yesBtn">Yes 💖</button>
+  <button id="noBtn">No 😢</button>
+</div>
+```
 
-noBtn.addEventListener("mouseover", () => {
-    const x = Math.random() * window.innerWidth * 0.8;
-    const y = Math.random() * window.innerHeight * 0.8;
+  </div>
 
-    noBtn.style.left = x + "px";
-    noBtn.style.top = y + "px";
-});
+  <script>
+    const noTexts = [
+      "No 😢",
+      "Really? 😟",
+      "You sure? 🥺",
+      "Really really sure? 😭",
+      "Think again... 💔",
+      "Please? 😔",
+      "Billy please 😢",
+      "Don't do this 😩",
+      "Last chance... 💘",
+      "Are you sureeee? 🥹"
+    ];
 
-document.getElementById("yes").onclick = () => {
-    document.body.innerHTML = `
-        <h1 style="color:#ff2e6a;">Are you sure Billy? 😏</h1>
-        <button onclick="finalYes()" style="padding:15px 30px; background:#4CAF50; color:white; border:none; border-radius:10px;">Yes 💕</button>
-    `;
-};
+    const noGifs = [
+      "https://media.tenor.com/5mbD2V7smWAAAAAi/milk-and-mocha-bear-couple.gif",
+      "https://media.tenor.com/x8v1oNUOmg4AAAAi/cute-cat.gif",
+      "https://media.tenor.com/zGm5acSjHCIAAAAi/cute-bear.gif",
+      "https://media.tenor.com/XiYuU9h44-AAAAAi/peach-goma.gif",
+      "https://media.tenor.com/8QqKX8JmN8AAAAAi/milk-mocha.gif",
+      "https://media.tenor.com/KUsIvwJ9QUsAAAAi/cat-cute.gif",
+      "https://media.tenor.com/2roX3uxz_68AAAAi/milk-and-mocha.gif",
+      "https://media.tenor.com/9ud1r4sc-QQAAAAi/cute-please.gif",
+      "https://media.tenor.com/3oryAZ4L8EkAAAAi/love-bear.gif",
+      "https://media.tenor.com/0AVbKGY_MxMAAAAi/love-cute.gif"
+    ];
 
-function finalYes() {
-    document.body.innerHTML = `
-        <h1 style="color:#ff2e6a;">YAYYYY 💕🥰</h1>
-        <p>You’re mine now Billy 😌</p>
-        <img src="https://media.tenor.com/0AVbKGY_MxMAAAAi/love-cute.gif" width="200">
-    `;
-}
-</script>
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const question = document.getElementById("question");
+    const mainGif = document.getElementById("mainGif");
+    const app = document.getElementById("app");
+    const hearts = document.getElementById("hearts");
+
+    let noCount = 0;
+    let yesScale = 1;
+    let noScale = 1;
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = Math.random() > 0.5 ? "💖" : "💕";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = 4 + Math.random() * 4 + "s";
+      heart.style.fontSize = 16 + Math.random() * 20 + "px";
+      hearts.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 8000);
+    }
+
+    setInterval(createHeart, 500);
+
+    noBtn.addEventListener("click", () => {
+      noCount++;
+
+      const textIndex = Math.min(noCount, noTexts.length - 1);
+      const gifIndex = Math.min(noCount, noGifs.length - 1);
+
+      noBtn.textContent = noTexts[textIndex];
+      mainGif.src = noGifs[gifIndex];
+
+      yesScale += 0.15;
+      noScale -= 0.08;
+
+      if (noScale < 0.35) {
+        noScale = 0.35;
+      }
+
+      yesBtn.style.transform = `scale(${yesScale})`;
+      noBtn.style.transform = `scale(${noScale})`;
+
+      if (noCount >= 8) {
+        question.textContent = "Billy... really, really sure? 🥺💔";
+      }
+
+      if (noCount >= 10) {
+        noBtn.textContent = "No 😔";
+        question.textContent = "Okay... last time asking 💕";
+      }
+    });
+
+    yesBtn.addEventListener("click", () => {
+      document.body.innerHTML = `
+        <div class="hearts" id="hearts"></div>
+        <div class="container final-message">
+          <h1>YAYYYYY 💕🥹</h1>
+          <p>You’re mine now, Billy 😌💖</p>
+          <img src="https://media.tenor.com/0AVbKGY_MxMAAAAi/love-cute.gif" alt="love gif" />
+        </div>
+      `;
+
+      const newHearts = document.getElementById("hearts");
+
+      function createFinalHeart() {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = Math.random() > 0.5 ? "💖" : "💘";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = 3 + Math.random() * 3 + "s";
+        heart.style.fontSize = 18 + Math.random() * 24 + "px";
+        newHearts.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 7000);
+      }
+
+      setInterval(createFinalHeart, 300);
+    });
+  </script>
 
 </body>
 </html>
