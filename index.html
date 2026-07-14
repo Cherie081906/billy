@@ -1,283 +1,608 @@
 <!DOCTYPE html>
-
 <html lang="mn">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Billy 💖</title>
+  <title>Хөдөө гаръя л даа 🥺</title>
+
   <style>
     * {
       box-sizing: border-box;
     }
 
-```
-body {
-  margin: 0;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: Arial, sans-serif;
-  text-align: center;
-  background: linear-gradient(135deg, #ffe3ec, #ffc6da, #ffdbe8);
-  overflow: hidden;
-  padding: 20px;
-}
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      margin: 0;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
 
-.container {
-  width: 100%;
-  max-width: 520px;
-  padding: 28px 22px 34px;
-  border-radius: 28px;
-  background: rgba(255, 255, 255, 0.28);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 12px 35px rgba(255, 105, 180, 0.18);
-  position: relative;
-  z-index: 2;
-}
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      color: #26343d;
+      background:
+        radial-gradient(circle at 15% 14%, white 0 5%, transparent 6%),
+        radial-gradient(circle at 82% 18%, rgba(255,255,255,.8) 0 7%, transparent 8%),
+        linear-gradient(
+          to bottom,
+          #78d8ff 0%,
+          #c8f2ff 47%,
+          #f7e9ad 48%,
+          #9bd877 70%,
+          #4ca85b 100%
+        );
+    }
 
-h1 {
-  color: #ff2f7d;
-  font-size: 2.2rem;
-  line-height: 1.3;
-  margin-bottom: 20px;
-  text-shadow: 1px 1px 10px rgba(255, 105, 180, 0.15);
-}
+    .sun {
+      position: fixed;
+      top: 7vh;
+      right: 8vw;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: #ffd84a;
+      box-shadow:
+        0 0 0 15px rgba(255, 216, 74, .18),
+        0 0 35px rgba(255, 195, 0, .35);
+    }
 
-.gif-box img {
-  width: 240px;
-  max-width: 85%;
-  border-radius: 22px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  margin-bottom: 24px;
-}
+    .hill {
+      position: fixed;
+      bottom: -20vh;
+      border-radius: 50% 50% 0 0;
+      pointer-events: none;
+    }
 
-.buttons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 18px;
-  flex-wrap: wrap;
-  margin-top: 8px;
-  min-height: 110px;
-}
+    .hill-one {
+      left: -15vw;
+      width: 75vw;
+      height: 42vh;
+      background: rgba(46, 149, 71, .35);
+      transform: rotate(7deg);
+    }
 
-button {
-  border: none;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  border-radius: 18px;
-  transition: all 0.25s ease;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
-  font-family: inherit;
-}
+    .hill-two {
+      right: -20vw;
+      width: 80vw;
+      height: 38vh;
+      background: rgba(28, 124, 57, .28);
+      transform: rotate(-8deg);
+    }
 
-#yesBtn {
-  background: linear-gradient(135deg, #49d36d, #31b85a);
-  font-size: 25px;
-  padding: 18px 40px;
-}
+    .floating {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
 
-#noBtn {
-  background: linear-gradient(135deg, #ff5d5d, #e53d3d);
-  font-size: 21px;
-  padding: 16px 28px;
-}
+    .floating-item {
+      position: absolute;
+      bottom: -50px;
+      opacity: .45;
+      animation: floatUp linear infinite;
+    }
 
-.hearts {
-  position: fixed;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 1;
-}
+    @keyframes floatUp {
+      to {
+        transform: translateY(-115vh) rotate(25deg);
+        opacity: 0;
+      }
+    }
 
-.heart {
-  position: absolute;
-  bottom: -30px;
-  opacity: 0.75;
-  animation: floatUp linear forwards;
-}
+    .card {
+      width: min(94vw, 460px);
+      min-height: min(720px, 90vh);
+      max-height: 92vh;
+      position: relative;
+      z-index: 2;
+      padding: 28px 20px 22px;
+      border-radius: 30px;
+      border: 2px solid rgba(255,255,255,.75);
+      background: rgba(255,255,255,.88);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 18px 50px rgba(26, 76, 94, .22);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
 
-@keyframes floatUp {
-  to {
-    transform: translateY(-110vh);
-    opacity: 0;
-  }
-}
+    .progress {
+      position: absolute;
+      top: 17px;
+      left: 22px;
+      right: 22px;
+      height: 7px;
+      overflow: hidden;
+      border-radius: 100px;
+      background: rgba(255, 122, 0, .16);
+    }
 
-.final-message h1 {
-  font-size: 2.8rem;
-  margin-bottom: 10px;
-}
+    .progress-bar {
+      width: 10%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #ffd23f, #ff7200);
+      transition: width .3s ease;
+    }
 
-.final-message p {
-  color: #d63384;
-  font-size: 1.25rem;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
+    .counter {
+      margin: 7px 0 14px;
+      color: rgba(36, 50, 60, .55);
+      font-size: 13px;
+      font-weight: bold;
+    }
 
-.final-message img {
-  width: 260px;
-  max-width: 88%;
-  border-radius: 22px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-}
+    .gif-box {
+      width: min(330px, 78vw);
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      margin-bottom: 20px;
+      border-radius: 25px;
+      background: #e8f7ff;
+      box-shadow: 0 10px 25px rgba(25, 74, 94, .18);
+    }
 
-@media (max-width: 600px) {
-  h1 {
-    font-size: 1.8rem;
-  }
+    .gif-box img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
 
-  #yesBtn {
-    font-size: 22px;
-    padding: 16px 34px;
-  }
+    h1 {
+      max-width: 390px;
+      margin: 0 0 20px;
+      font-size: clamp(24px, 6vw, 34px);
+      line-height: 1.15;
+      animation: pop .3s ease;
+    }
 
-  #noBtn {
-    font-size: 18px;
-    padding: 14px 22px;
-  }
+    @keyframes pop {
+      from {
+        transform: scale(.87);
+        opacity: 0;
+      }
 
-  .gif-box img {
-    width: 210px;
-  }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
 
-  .buttons {
-    gap: 14px;
-  }
-}
-```
+    .button-zone {
+      width: 100%;
+      min-height: 135px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+    }
 
+    button {
+      border: none;
+      border-radius: 100px;
+      padding: 14px 27px;
+      font-size: 19px;
+      font-weight: bold;
+      cursor: pointer;
+      white-space: nowrap;
+      touch-action: manipulation;
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        opacity .2s ease;
+    }
+
+    #yesButton {
+      position: relative;
+      z-index: 5;
+      color: white;
+      background: linear-gradient(135deg, #ff9b28, #ff6800);
+      box-shadow: 0 9px 20px rgba(255, 104, 0, .32);
+    }
+
+    #noButton {
+      position: relative;
+      z-index: 4;
+      color: #29434f;
+      background: #dff3ff;
+      box-shadow: 0 7px 16px rgba(28, 80, 100, .15);
+    }
+
+    .final-title {
+      color: #df5f00;
+      font-size: clamp(29px, 7vw, 42px);
+      animation: finalPop .6s ease;
+    }
+
+    @keyframes finalPop {
+      from {
+        transform: scale(.65) rotate(-3deg);
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .confetti {
+      position: fixed;
+      top: -25px;
+      width: 11px;
+      height: 16px;
+      z-index: 20;
+      pointer-events: none;
+      animation: fall 3s linear forwards;
+    }
+
+    @keyframes fall {
+      to {
+        transform:
+          translate3d(var(--drift), 110vh, 0)
+          rotate(760deg);
+      }
+    }
+
+    @media (max-height: 710px) {
+      .card {
+        min-height: 94vh;
+      }
+
+      .gif-box {
+        width: min(245px, 58vw);
+      }
+
+      h1 {
+        margin-bottom: 8px;
+        font-size: 24px;
+      }
+
+      .button-zone {
+        min-height: 105px;
+      }
+    }
   </style>
 </head>
+
 <body>
-  <div class="hearts" id="hearts"></div>
+  <div class="sun"></div>
+  <div class="hill hill-one"></div>
+  <div class="hill hill-two"></div>
+  <div class="floating" id="floating"></div>
 
-  <div class="container" id="app">
-    <h1 id="question">Billy... надтай болзох уу? 💖</h1>
+  <main class="card">
+    <div class="progress" id="progress">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
 
-```
-<div class="gif-box">
-  <img
-    id="mainGif"
-    src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExdmxrampxMXh4enhwZjFtOXQxNGh6eTJ1MnhrbHFpd295MnhtbGF1NCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/KmxmoHUGPDjfQXqGgv/giphy.gif"
-    alt="cute gif"
-  />
-</div>
+    <div class="counter" id="counter">1 / 10</div>
 
-<div class="buttons" id="buttonArea">
-  <button id="yesBtn">Тиймээ 💕</button>
-  <button id="noBtn">Үгүй 😢</button>
-</div>
-```
+    <div class="gif-box">
+      <img id="gif" alt="GIF" />
+    </div>
 
-  </div>
+    <h1 id="question"></h1>
+
+    <div class="button-zone" id="buttonZone">
+      <button id="yesButton">Тийм ээ 💖</button>
+      <button id="noButton">Үгүй</button>
+    </div>
+  </main>
 
   <script>
-    const questions = [
-      "Billy... надтай болзох уу? 💖",
-      "Надтай болзооч 🥺",
-      "Та харамсахгүй ээ 😭",
-      "Нэг тийм гээд үз л дээ 💕",
-      "Гуйжийншдээ 😔",
-      "Яагаад үгүй гэж... 🥹",
-      "Дахиад нэг бодооч 💘",
-      "Надад боломж өгөөч 😢",
-      "Really? You sure? 💔",
-      "Сүүлчийн удаа асууж байна... 💞",
-      "Одоо тиймээ л дар даа 😭💖"
+    const steps = [
+      {
+        text: "Хөдөө гаръя 🥺",
+        gif: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWt6dWcwcjc4cWIyeW03MnBuajI1NTBmbXhtc2Q4M21zaTJobGdzciZlcD12MV9naWZzX3NlYXJjaCZjdD1n/MCXqa6SugyCZZl7piR/giphy.gif"
+      },
+      {
+        text: "Агаар салхинд гаръя л даа 🌿",
+        gif: "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExMWJhdHVtYTVuYTN4Z2N3bzZlcGhiNXp6dHZrdzJ6eGw4eDEycDhiZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/P8R7H7IpfWR4C5M7p3/giphy.gif"
+      },
+      {
+        text: "Сайхан тоглож наадаад явъя л даа 😭",
+        gif: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExano0OW1iMWt4Z25kZ292YWZkNjBkZTNmajZkMmVhbGNhcXlydGI0aiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/VbKLOdvCxBFNZpYvhL/giphy.gif"
+      },
+      {
+        text: "Гоё шүү дээ, тийм ээ? 🥹",
+        gif: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExano0OW1iMWt4Z25kZ292YWZkNjBkZTNmajZkMmVhbGNhcXlydGI0aiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3KC2jD2QcBOSc/giphy.gif"
+      },
+      {
+        text: "Мах энэ тэр шараад гоё биш үү? 🍖",
+        gif: "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3NnlkbnFjenR3d3poNTVjcW1zN3N4aHViaXVzZGE0YmFleWtjc3U2diZlcD12MV9naWZzX3JlbGF0ZWQmY3Q9Zw/K0dTI5x9i9fkHBCuQW/giphy.gif"
+      },
+      {
+        text: "Сайхан Монголд байгаа юм шиг гаръя л даа 🇲🇳",
+        gif: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbGhzZ2RsdHVsYmN0aDdrNXkyMXhsNHF2cnFudTdsajBva3Ric3VwMiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/T0RQmjegkDhKhPpHVs/giphy.gif"
+      },
+      {
+        text: "Төсөөлөөд үз дээ 💭",
+        gif: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYXh2MTd0ZGx0YzUzcWNiM3Nid3p2eWptbGpkbnYyaTE0dHAzMzBnZSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/QFsPtlrcMlS8w/giphy.gif"
+      },
+      {
+        text: "Цаанаасаа л бие чинь хүсэж байгаа 😏",
+        gif: "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3OXVkY21ocGd1OGVoZDFsb2Vsa2JpMzl3MGtlaG1kcmM1OXVibXphbCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/8aaYpes0ZWsyiKMWsJ/giphy.gif"
+      },
+      {
+        text: "Зун цаг дууслаа шүү дээ ☀️",
+        gif: "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExczM2ODNuNjNjeXp3bW83cmkxYzBwZ3lmbW8zdGg0bXVydGJ6Z21rYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3orieWsOgnin1Mh5wk/giphy.gif"
+      },
+      {
+        text: "Гуйж байна аа 😭👉👈",
+        gif: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExejI1dmRsYWp5eTBucXJ0a3FsODJ2djBwMTlhbnFld3V4aDN4eGh0cyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/9uwnYUDw342pq/giphy.gif"
+      }
     ];
 
-    const gifs = [
-      "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExdmxrampxMXh4enhwZjFtOXQxNGh6eTJ1MnhrbHFpd295MnhtbGF1NCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/KmxmoHUGPDjfQXqGgv/giphy.gif",
-      "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNTNzamZraXF5aGx2dzF6cmNzbTduenMweDFzeHd0OWt3dnBqNTR0biZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/IzXiddo2twMmdmU8Lv/giphy.gif",
-      "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExamo2cndqbXRpa2xseDk3eXNzMTV0NWhyMGh1aDJyb3hxNDZiMW0xMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ppVwDRqJbwtnNKEC43/giphy.gif",
-      "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbTF6NWg5d3RkYXo5d3BkN3NjcDc5YzM5cDg0cGJwanBjNHN0ZHRuOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/y6lu312reRzVC46yFn/giphy.gif",
-      "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExcWNqb2lzancydHRncDVxejI3YnN6MGxvaDNraXN2MTBodXpxNmF2eiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/QbwfjPd2OamuL60iNz/giphy.gif",
-      "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExbHFyeTdxMnZqdWlwNDZ6eXBtcGxkYWRoOGthOXp5OXZnOGdyNjhldSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xTiTnMhJTwNHChdTZS/giphy.gif",
-      "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExY2Z5amszdGFyMWR3MzJiaHc2MDcwNTZ5djNicWJueWtneTc2OHpybCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/5vYwHanb6y3HWBQIox/giphy.gif",
-      "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExdmxrampxMXh4enhwZjFtOXQxNGh6eTJ1MnhrbHFpd295MnhtbGF1NCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/KmxmoHUGPDjfQXqGgv/giphy.gif",
-      "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNTNzamZraXF5aGx2dzF6cmNzbTduenMweDFzeHd0OWt3dnBqNTR0biZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/IzXiddo2twMmdmU8Lv/giphy.gif",
-      "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExamo2cndqbXRpa2xseDk3eXNzMTV0NWhyMGh1aDJyb3hxNDZiMW0xMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ppVwDRqJbwtnNKEC43/giphy.gif",
-      "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbTF6NWg5d3RkYXo5d3BkN3NjcDc5YzM5cDg0cGJwanBjNHN0ZHRuOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/y6lu312reRzVC46yFn/giphy.gif"
-    ];
+    const finalGif =
+      "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3dGo2M3p1azY0bjZhbHFjZW9mdDBmeXBzaGV0M3B4NGlldncxYjJ2cCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/jbUspndg5yz8UfVs8R/giphy.gif";
 
-    const finalGif = "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExcWNqb2lzancydHRncDVxejI3YnN6MGxvaDNraXN2MTBodXpxNmF2eiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/QbwfjPd2OamuL60iNz/giphy.gif";
-
-    const yesBtn = document.getElementById("yesBtn");
-    const noBtn = document.getElementById("noBtn");
-    const question = document.getElementById("question");
-    const mainGif = document.getElementById("mainGif");
-    const app = document.getElementById("app");
-    const hearts = document.getElementById("hearts");
-    const buttonArea = document.getElementById("buttonArea");
-
-    let noCount = 0;
+    let currentStep = 0;
     let yesScale = 1;
     let noScale = 1;
 
-    function createHeart(target) {
-      const heart = document.createElement("div");
-      heart.className = "heart";
-      heart.innerHTML = Math.random() > 0.5 ? "💖" : "💕";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = (4 + Math.random() * 4) + "s";
-      heart.style.fontSize = (16 + Math.random() * 20) + "px";
-      target.appendChild(heart);
+    const gif = document.getElementById("gif");
+    const question = document.getElementById("question");
+    const yesButton = document.getElementById("yesButton");
+    const noButton = document.getElementById("noButton");
+    const buttonZone = document.getElementById("buttonZone");
+    const counter = document.getElementById("counter");
+    const progress = document.getElementById("progress");
+    const progressBar = document.getElementById("progressBar");
 
-      setTimeout(() => {
-        heart.remove();
-      }, 8000);
+    const gifUrls = [
+      ...steps.map(step => step.gif),
+      finalGif
+    ];
+
+    gifUrls.forEach(url => {
+      const image = new Image();
+      image.src = url;
+    });
+
+    function showStep() {
+      const step = steps[currentStep];
+
+      gif.src = step.gif;
+      question.textContent = step.text;
+
+      question.style.animation = "none";
+      question.offsetHeight;
+      question.style.animation = "pop .3s ease";
+
+      counter.textContent =
+        `${currentStep + 1} / ${steps.length}`;
+
+      progressBar.style.width =
+        `${((currentStep + 1) / steps.length) * 100}%`;
+
+      yesScale = Math.min(
+        1 + currentStep * 0.11,
+        1.95
+      );
+
+      noScale =
+        currentStep === steps.length - 1
+          ? 0.75
+          : 1;
+
+      yesButton.style.transform =
+        `scale(${yesScale})`;
+
+      noButton.style.transform =
+        `scale(${noScale})`;
+
+      noButton.style.position = "relative";
+      noButton.style.left = "auto";
+      noButton.style.top = "auto";
     }
 
-    setInterval(() => createHeart(hearts), 500);
-
-    noBtn.addEventListener("click", () => {
-      noCount++;
-
-      const index = Math.min(noCount, questions.length - 1);
-      question.textContent = questions[index];
-      mainGif.src = gifs[index];
-
-      yesScale += 0.18;
-      noScale -= 0.09;
-
-      if (noScale < 0.18) {
-        noScale = 0.18;
+    function nextStep() {
+      if (currentStep < steps.length - 1) {
+        currentStep++;
+        showStep();
+      } else {
+        showFinal();
       }
+    }
 
-      yesBtn.style.transform = `scale(${yesScale})`;
-      noBtn.style.transform = `scale(${noScale})`;
+    yesButton.addEventListener("click", nextStep);
 
-      if (noCount >= 10) {
-        question.textContent = "За тэгвэл одоо тиймээ дар 😭💖";
-        mainGif.src = gifs[10];
-        noBtn.style.display = "none";
-        yesBtn.textContent = "ТИЙМЭЭ 💘";
-        yesBtn.style.transform = "scale(1.9)";
-        yesBtn.style.padding = "24px 58px";
-        yesBtn.style.fontSize = "30px";
-        buttonArea.style.gap = "0";
+    noButton.addEventListener("click", event => {
+      event.preventDefault();
+
+      if (currentStep < steps.length - 1) {
+        currentStep++;
+        showStep();
+      } else {
+        moveNoButton();
       }
     });
 
-    yesBtn.addEventListener("click", () => {
-      document.body.innerHTML = `
-        <div class="hearts" id="finalHearts"></div>
-        <div class="container final-message">
-          <h1>YAYYYYY 💕🥹</h1>
-          <p>Billy, чи зөв сонголт хийлээ 😌💖</p>
-          <img src="${finalGif}" alt="happy gif" />
-        </div>
-      `;
-
-      const finalHearts = document.getElementById("finalHearts");
-      setInterval(() => createHeart(finalHearts), 320);
+    noButton.addEventListener("mouseenter", event => {
+      if (currentStep === steps.length - 1) {
+        event.preventDefault();
+        moveNoButton();
+      }
     });
+
+    noButton.addEventListener(
+      "touchstart",
+      event => {
+        if (currentStep === steps.length - 1) {
+          event.preventDefault();
+          moveNoButton();
+        }
+      },
+      { passive: false }
+    );
+
+    document.addEventListener("pointermove", event => {
+      if (
+        currentStep !== steps.length - 1 ||
+        buttonZone.style.display === "none"
+      ) {
+        return;
+      }
+
+      const rect = noButton.getBoundingClientRect();
+
+      const distance = Math.hypot(
+        event.clientX - (rect.left + rect.width / 2),
+        event.clientY - (rect.top + rect.height / 2)
+      );
+
+      if (distance < 75) {
+        moveNoButton();
+      }
+    });
+
+    function moveNoButton() {
+      const zoneRect =
+        buttonZone.getBoundingClientRect();
+
+      const buttonRect =
+        noButton.getBoundingClientRect();
+
+      const maxX = Math.max(
+        0,
+        zoneRect.width - buttonRect.width
+      );
+
+      const maxY = Math.max(
+        0,
+        zoneRect.height - buttonRect.height
+      );
+
+      noScale = Math.max(noScale - 0.1, 0.18);
+      yesScale = Math.min(yesScale + 0.12, 2.3);
+
+      noButton.style.position = "absolute";
+      noButton.style.left =
+        `${Math.random() * maxX}px`;
+
+      noButton.style.top =
+        `${Math.random() * maxY}px`;
+
+      noButton.style.transform =
+        `scale(${noScale})`;
+
+      yesButton.style.transform =
+        `scale(${yesScale})`;
+    }
+
+    function showFinal() {
+      progress.style.display = "none";
+      counter.style.display = "none";
+      buttonZone.style.display = "none";
+
+      gif.src = finalGif;
+
+      question.textContent =
+        "Тийм ээ, чи зөв сонголт хийлээ! 💖";
+
+      question.className = "final-title";
+
+      launchConfetti();
+    }
+
+    function createFloatingItems() {
+      const floating =
+        document.getElementById("floating");
+
+      const icons = [
+        "☀️",
+        "☁️",
+        "🌿",
+        "🌼",
+        "🦋",
+        "✨"
+      ];
+
+      for (let i = 0; i < 18; i++) {
+        const item =
+          document.createElement("span");
+
+        item.className = "floating-item";
+
+        item.textContent =
+          icons[
+            Math.floor(Math.random() * icons.length)
+          ];
+
+        item.style.left =
+          `${Math.random() * 100}%`;
+
+        item.style.fontSize =
+          `${16 + Math.random() * 24}px`;
+
+        item.style.animationDuration =
+          `${7 + Math.random() * 8}s`;
+
+        item.style.animationDelay =
+          `${Math.random() * 8}s`;
+
+        floating.appendChild(item);
+      }
+    }
+
+    function launchConfetti() {
+      const colors = [
+        "#ff7200",
+        "#ffd23f",
+        "#50c878",
+        "#56c7ff",
+        "#8d78ff"
+      ];
+
+      for (let i = 0; i < 90; i++) {
+        const piece =
+          document.createElement("div");
+
+        piece.className = "confetti";
+
+        piece.style.left =
+          `${Math.random() * 100}vw`;
+
+        piece.style.background =
+          colors[
+            Math.floor(Math.random() * colors.length)
+          ];
+
+        piece.style.borderRadius =
+          Math.random() > 0.5 ? "50%" : "2px";
+
+        piece.style.animationDelay =
+          `${Math.random() * 0.8}s`;
+
+        piece.style.animationDuration =
+          `${2.4 + Math.random() * 2}s`;
+
+        piece.style.setProperty(
+          "--drift",
+          `${-130 + Math.random() * 260}px`
+        );
+
+        document.body.appendChild(piece);
+
+        setTimeout(() => {
+          piece.remove();
+        }, 5000);
+      }
+    }
+
+    createFloatingItems();
+    showStep();
   </script>
-
 </body>
 </html>
